@@ -1,0 +1,20 @@
+﻿body {
+}
+
+#container
+{
+}
+
+.paintContainer
+{
+    display: inline-block;
+    width: 125px;
+}
+
+.paintDisplay
+{
+    border: 1px solid black;
+    height: 100px;
+    width: 100px;
+
+}
