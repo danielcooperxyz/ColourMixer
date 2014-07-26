@@ -1,23 +1,22 @@
 ﻿@{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<link rel="stylesheet" type="text/css" href="~/Styles/colourMixer.css" />
-
-<h2>Index</h2>
-
-
 <div id="container">
+
+    <h1>Colour Mixer</h1>
+
     <div class="paintContainer">
-        <select id="paintOneDropdown"></select>
-        <div id="paintOne" class="paintDisplay"></div>
+        <select id="paintOne" class="Dropdown"></select>
+        <div id="paintOne" class="PaintDisplay"></div>
     </div>
     <div class="paintContainer">
-        <select id="paintTwoDropdown"></select>
-        <div id="paintTwo" class="paintDisplay"></div>
+        <select id="paintTwo" class="Dropdown"></select>
+        <div id="paintTwo" class="PaintDisplay"></div>
     </div>
     <div class="paintContainer">
-        <select id="paintThreeDropdown"></select>
-        <div id="paintThree" class="paintDisplay"></div>
+        <select id="paintThree" class="Dropdown"></select>
+        <div id="paintThree" class="PaintDisplay"></div>
     </div>
 </div>
