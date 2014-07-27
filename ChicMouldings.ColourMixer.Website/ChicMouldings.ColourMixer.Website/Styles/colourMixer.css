@@ -55,3 +55,13 @@ h1
     height: 200px;
     width: 500px;
 }
+
+#mixButton 
+{
+    background-color: #00466b;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-top: 50px;
+    display: inline-block;
+    cursor: pointer;
+}
