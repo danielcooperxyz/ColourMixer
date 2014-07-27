@@ -66,13 +66,54 @@ function colourSelected()
     return false;
 }
 
+function calculateTotals(array, parts, totalParts)
+{
+    var index, total = 0;
+
+    for (index = 0; index < array.length; index++)
+    {
+        total += (parseInt(array[index], 0) * parseInt(parts[index], 0));
+    }
+
+    return parseInt(total / totalParts, 0);
+}
+
 function mixColours()
 {
-    var colour1, colour2, colour3;
+    var colours, red = [], blue = [], green = [],
+        index, temp = [], totalParts, totals = [],
+        parts = [], resultColour;
 
-    colour1 = $('#paintOneValue').val();
-    colour2 = $('#paintTwoValue').val();
-    colour3 = $('#paintThreeValue').val();
+    colours =
+    [
+        $('#paintOneValue').val(),
+        $('#paintTwoValue').val(),
+        $('#paintThreeValue').val()
+    ];
+
+    parts = [1, 1, 1];
+
+    totalParts = 2;
+
+    for (index = 0; index < colours.length; index++)
+    {
+        temp = colours[index].split(',');
+
+        if (temp.length > 1)
+        {
+            red.push(temp[0]);
+            blue.push(temp[1]);
+            green.push(temp[2]);
+        }
+    }
+
+    totals.push(calculateTotals(red, parts, totalParts));
+    totals.push(calculateTotals(blue, parts, totalParts));
+    totals.push(calculateTotals(green, parts, totalParts));
+
+    resultColour = new RGBColor("rgb(" + totals.join(',') + ")");
+
+    $('#paintResult').css('background', resultColour.toHex());
 
     return false;
 }
