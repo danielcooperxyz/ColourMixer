@@ -54,7 +54,7 @@ function populateDropdowns(dropdowns)
 function colourSelected()
 {
     var selectedColour, colour, displayBox;
-    
+
     selectedColour = $(this).val();
 
     colour = new RGBColor('rgb(' + selectedColour + ')');
@@ -62,13 +62,29 @@ function colourSelected()
     displayBox = $(this).siblings('.PaintDisplay');
 
     displayBox.css('background', colour.toHex());
+
+    return false;
+}
+
+function mixColours()
+{
+    var colour1, colour2, colour3;
+
+    colour1 = $('#paintOneValue').val();
+    colour2 = $('#paintTwoValue').val();
+    colour3 = $('#paintThreeValue').val();
+
+    return false;
 }
 
 $(document).ready(function ()
 {
-    var dropdowns = $('.Dropdown');
+    var dropdowns = $('.Dropdown'),
+        mixButton = $('#mixButton');
 
     populateDropdowns(dropdowns);
 
     dropdowns.change(colourSelected);
+
+    mixButton.click(mixColours);
 });

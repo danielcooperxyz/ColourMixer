@@ -51,7 +51,7 @@ h1
 
 .ResultDisplay
 {
-    margin-top:50px;
+    margin-top:25px;
     height: 200px;
     width: 500px;
 }
@@ -61,7 +61,9 @@ h1
     background-color: #00466b;
     border-radius: 5px;
     padding: 10px 20px;
-    margin-top: 50px;
-    display: inline-block;
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 82px;
     cursor: pointer;
 }
