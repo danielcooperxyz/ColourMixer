@@ -91,7 +91,12 @@ function mixColours()
         $('#paintThreeValue').val()
     ];
 
-    parts = [1, 1, 1];
+    parts =
+    [
+        $('#paintOneParts').val(),
+        $('#paintTwoParts').val(),
+        $('#paintThreeParts').val()
+    ];
 
     totalParts = 2;
 
@@ -121,11 +126,14 @@ function mixColours()
 $(document).ready(function ()
 {
     var dropdowns = $('.Dropdown'),
+        spinners = $('.Spinner'),
         mixButton = $('#mixButton');
 
     populateDropdowns(dropdowns);
 
-    dropdowns.change(colourSelected);
+    dropdowns.selectmenu({ change: colourSelected });
+
+    spinners.spinner();
 
     mixButton.click(mixColours);
 });

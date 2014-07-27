@@ -13,6 +13,7 @@ namespace ChicMouldings.ColourMixer.Website.App_Start
         {
             bundles.Add(new ScriptBundle("~/bundles/scripts").Include(
                         "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/jquery-ui.min.js",
                         "~/Scripts/ColourMixer.js",
                         "~/Scripts/RGBColor.js"));
 

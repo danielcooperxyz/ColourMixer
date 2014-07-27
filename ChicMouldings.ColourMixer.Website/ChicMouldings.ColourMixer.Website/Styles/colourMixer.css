@@ -67,3 +67,12 @@ h1
     width: 82px;
     cursor: pointer;
 }
+
+.ui-selectmenu-button, .ui-spinner
+{
+    width: 200px;
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
+}
