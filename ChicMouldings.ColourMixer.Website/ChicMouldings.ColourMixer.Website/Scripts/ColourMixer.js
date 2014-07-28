@@ -133,7 +133,11 @@ $(document).ready(function ()
 
     dropdowns.selectmenu({ change: colourSelected });
 
-    spinners.spinner();
+    spinners.spinner(
+        {
+            min: 1,
+            numberFormat: "C"
+        });
 
     mixButton.click(mixColours);
 });
