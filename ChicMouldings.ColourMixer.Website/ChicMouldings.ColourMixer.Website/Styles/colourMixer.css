@@ -104,4 +104,10 @@ h1
         height: 100px;
         width: 100px;
     }
+
+    #mixButton
+    {
+        width: 50%;
+        text-align:center;
+    }
 }
