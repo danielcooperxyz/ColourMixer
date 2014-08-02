@@ -151,7 +151,7 @@ $(document).ready(function ()
 
     spinners.spinner(
         {
-            min: 1,
+            min: 0,
             numberFormat: "C"
         });
 
