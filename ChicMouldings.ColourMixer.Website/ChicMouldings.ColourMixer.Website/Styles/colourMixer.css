@@ -53,8 +53,14 @@ h1
 {
     margin-top:25px;
     height: 200px;
-    width: 500px;
+    width: 100%;
 }
+
+.Clear
+{
+    clear: both;
+}
+
 
 #mixButton 
 {
@@ -75,4 +81,27 @@ h1
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 5px;
+}
+
+@media screen and (max-width: 1080px)
+{  
+    .PaintContainer
+    {
+        display: block;
+        margin: 0 1%;
+        width: 98%;
+    }
+
+    .ui-selectmenu-button, .ui-spinner
+    {
+        width: 200px;
+        display:block;
+        margin-bottom: 5px;
+    }
+
+    .PaintDisplay
+    {    
+        height: 100px;
+        width: 100px;
+    }
 }

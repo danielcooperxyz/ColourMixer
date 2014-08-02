@@ -80,8 +80,8 @@ function calculateTotals(array, parts, totalParts)
 
 function mixColours()
 {
-    var colours, red = [], blue = [], green = [],
-        index, temp = [], totalParts, totals = [],
+    var colours = [], red = [], blue = [], green = [],
+        index, temp = [], totalParts = 0, totals = [],
         parts = [], resultColour;
 
     colours =
@@ -98,27 +98,43 @@ function mixColours()
         $('#paintThreeParts').val()
     ];
 
-    totalParts = 2;
-
     for (index = 0; index < colours.length; index++)
     {
-        temp = colours[index].split(',');
-
-        if (temp.length > 1)
+        if (colours[index].length > 1)
         {
-            red.push(temp[0]);
-            blue.push(temp[1]);
-            green.push(temp[2]);
+            if (parts[index].length === 0
+                || parts[index] === 0)
+            {
+                parts[index] = 1;
+            }
+        }
+        else
+        {
+            parts[index] = 0;
+        }
+        
+        if (colours[index] !== '0')
+        {
+            totalParts += parseInt(parts[index], 0);
+
+            temp = new RGBColor("rgb(" + colours[index] + ")");
+
+            red.push(temp.r);
+            green.push(temp.g);
+            blue.push(temp.b);
         }
     }
 
     totals.push(calculateTotals(red, parts, totalParts));
-    totals.push(calculateTotals(blue, parts, totalParts));
     totals.push(calculateTotals(green, parts, totalParts));
+    totals.push(calculateTotals(blue, parts, totalParts));
 
-    resultColour = new RGBColor("rgb(" + totals.join(',') + ")");
+    resultColour = new RGBColor("rgb(" + totals.join(',') + ")").toHex();
 
-    $('#paintResult').css('background', resultColour.toHex());
+    if (resultColour !== '#000000')
+    {
+        $('#paintResult').css('background', resultColour);
+    }
 
     return false;
 }
