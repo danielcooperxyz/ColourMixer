@@ -25,6 +25,11 @@ h1
     float: right;
 }
 
+#selectionContainer, #resultContainer
+{
+    width: 48%;
+}
+
 .PaintContainer
 {
     margin: 20px 1%;
@@ -94,19 +99,42 @@ h1
 }
 
 @media screen and (max-width: 1080px)
-{  
+{
+    #container
+    {
+        width: 100%;
+    }
+
+    #selectionContainer, #resultContainer
+    {
+        float:none;
+        width: 100%;
+    }
+
     .PaintContainer
     {
         display: block;
-        margin: 0 1%;
+        margin: 20px 1%;
         width: 98%;
+    }
+
+    .InputContainer
+    {
+        width: 80%;
+    }
+
+    .PaintDisplay
+    {
+        margin-left: 0;
     }
 
     .ui-selectmenu-button, .ui-spinner
     {
-        width: 200px;
+        width: 100%;
         display:block;
         margin-bottom: 5px;
+        margin-left: 0;
+        margin-right: 0;
     }
 
     #mixButton

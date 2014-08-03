@@ -4,10 +4,10 @@
 }
 
 <div id="container">
-    <br/>
+    <br />
     <h1>Colour Mixer</h1>
 
-    <div class="Left">
+    <div id="selectionContainer" class="Left">
         <div class="PaintContainer">
             <div class="Left InputContainer">
                 <select id="paintOneValue" class="Dropdown"></select>
@@ -34,13 +34,10 @@
         </div>
     </div>
 
-    <div class="Right">
+    <div id="resultContainer" class="Right">
         <div id="mixButton">Mix Colours</div>
-
-        <div class="ResultContainer">
-            <div id="recipe"></div>
-            <div id="paintResult" class="ResultDisplay"></div>
-        </div>
+        <div id="paintResult" class="Left ResultDisplay"></div>
+        <div id="recipe" class="Right"></div>
     </div>
     <div class="Clear"></div>
 </div>

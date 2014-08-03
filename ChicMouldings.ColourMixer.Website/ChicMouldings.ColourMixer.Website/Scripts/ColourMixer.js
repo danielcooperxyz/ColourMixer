@@ -149,6 +149,8 @@ $(document).ready(function ()
 
     dropdowns.selectmenu({ change: colourSelected });
 
+    $('.ui-selectmenu-button').css("width", "100%");
+
     spinners.spinner(
         {
             min: 0,
