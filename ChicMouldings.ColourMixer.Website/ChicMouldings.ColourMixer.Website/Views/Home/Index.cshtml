@@ -7,32 +7,40 @@
     <br/>
     <h1>Colour Mixer</h1>
 
-    <div class="PaintContainer">
-        <div class="InputContainer">
-            <select id="paintOneValue" class="Dropdown"></select>
-            <input id="paintOneParts" class="Spinner" placeholder="How many parts?" />
+    <div class="Left">
+        <div class="PaintContainer">
+            <div class="Left InputContainer">
+                <select id="paintOneValue" class="Dropdown"></select>
+                <input id="paintOneParts" class="Spinner" placeholder="How many parts?" />
+            </div>
+            <div id="paintOne" class="Right PaintDisplay"></div>
+            <div class="Clear"></div>
         </div>
-        <div id="paintOne" class="PaintDisplay"></div>
-    </div>
-    <div class="PaintContainer">
-        <div class="InputContainer">
-            <select id="paintTwoValue" class="Dropdown"></select>
-            <input id="paintTwoParts" class="Spinner" placeholder="How many parts?" />
+        <div class="PaintContainer">
+            <div class="Left InputContainer">
+                <select id="paintTwoValue" class="Dropdown"></select>
+                <input id="paintTwoParts" class="Spinner" placeholder="How many parts?" />
+            </div>
+            <div id="paintTwo" class="Right PaintDisplay"></div>
+            <div class="Clear"></div>
         </div>
-        <div id="paintTwo" class="PaintDisplay"></div>
-    </div>
-    <div class="PaintContainer">
-        <div class="InputContainer">
-            <select id="paintThreeValue" class="Dropdown"></select>
-            <input id="paintThreeParts" class="Spinner" placeholder="How many parts?" />
+        <div class="PaintContainer">
+            <div class="Left InputContainer">
+                <select id="paintThreeValue" class="Dropdown"></select>
+                <input id="paintThreeParts" class="Spinner" placeholder="How many parts?" />
+            </div>
+            <div id="paintThree" class="Right PaintDisplay"></div>
+            <div class="Clear"></div>
         </div>
-        <div id="paintThree" class="PaintDisplay"></div>
     </div>
 
-    <div id="mixButton">Mix Colours</div>
+    <div class="Right">
+        <div id="mixButton">Mix Colours</div>
 
-    <div class="ResultContainer">
-        <div id="recipe"></div>
-        <div id="paintResult" class="ResultDisplay"></div>
+        <div class="ResultContainer">
+            <div id="recipe"></div>
+            <div id="paintResult" class="ResultDisplay"></div>
+        </div>
     </div>
+    <div class="Clear"></div>
 </div>
