@@ -1,6 +1,6 @@
 ﻿body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #60c8ff;
+    color: #0088d1;
     background-color: #fbfcfd;
     margin: 0;
 }
@@ -81,7 +81,7 @@ h1
 
 .ResultDisplay
 {
-    margin-top:25px;
+    margin-top:75px;
     height: 150px;
     width: 150px;
 }
@@ -96,6 +96,7 @@ h1
     margin-right: auto;
     width: 82px;
     cursor: pointer;
+    color: #60c8ff;
 }
 
 .ui-selectmenu-button, .ui-spinner
@@ -110,6 +111,7 @@ h1
 #recipe
 {
     margin-top: 20%;
+    margin-right: 50px;
 }
 
 @media screen and (max-width: 1080px)

@@ -59,7 +59,7 @@ function colourSelected()
 
     colour = new RGBColor('rgb(' + selectedColour + ')');
 
-    displayBox = $(this).parent().siblings('.PaintDisplay');
+    displayBox = $(this).parents('.PaintContainer').find('.PaintDisplay');
 
     displayBox.css('background', colour.toHex());
 
