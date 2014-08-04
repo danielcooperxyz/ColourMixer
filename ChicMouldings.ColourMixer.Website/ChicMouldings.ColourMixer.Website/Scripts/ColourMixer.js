@@ -68,14 +68,37 @@ function colourSelected()
 
 function calculateTotals(array, parts, totalParts)
 {
-    var index, total = 0;
+    var index, part = 0, total = 0;
 
-    for (index = 0; index < array.length; index++)
+    for (index = 0; index < parts.length; index++)
     {
-        total += (parseInt(array[index], 0) * parseInt(parts[index], 0));
+        part = parseInt(parts[index], 0);
+        
+        if (part > 0)
+        {
+            total += (parseInt(array[index], 0) * part);
+        }
     }
 
     return parseInt(total / totalParts, 0);
+}
+
+function displayRecipe(colours, parts)
+{
+    var index = 0, recipeText = "<ul>";
+
+    for (index = 0; index < colours.length; index++)
+    {
+        if (parts[index] > 0)
+        {
+            recipeText += "<li>" + parts[index] + " x "
+                 + colours[index].text() + "</li>";
+        }
+    }
+
+    recipeText += "</ul>";
+
+    $('#recipe').html(recipeText);
 }
 
 function mixColours()
@@ -86,43 +109,42 @@ function mixColours()
 
     colours =
     [
-        $('#paintOneValue').val(),
-        $('#paintTwoValue').val(),
-        $('#paintThreeValue').val()
+        $('#paintOneValue option:selected'),
+        $('#paintTwoValue option:selected'),
+        $('#paintThreeValue option:selected'),
+        $('#paintFourValue option:selected')
     ];
 
     parts =
     [
         $('#paintOneParts').val(),
         $('#paintTwoParts').val(),
-        $('#paintThreeParts').val()
+        $('#paintThreeParts').val(),
+        $('#paintFourParts').val()
     ];
 
     for (index = 0; index < colours.length; index++)
     {
-        if (colours[index].length > 1)
+        if (colours[index].val() === "0")
+        {
+            parts[index] = 0;
+        }
+        else
         {
             if (parts[index].length === 0
-                || parts[index] === 0)
+                   || parts[index] === 0)
             {
                 parts[index] = 1;
             }
         }
-        else
-        {
-            parts[index] = 0;
-        }
         
-        if (colours[index] !== '0')
-        {
-            totalParts += parseInt(parts[index], 0);
+        totalParts += parseInt(parts[index], 0);
 
-            temp = new RGBColor("rgb(" + colours[index] + ")");
+        temp = new RGBColor("rgb(" + colours[index].val() + ")");
 
-            red.push(temp.r);
-            green.push(temp.g);
-            blue.push(temp.b);
-        }
+        red.push(temp.r);
+        green.push(temp.g);
+        blue.push(temp.b);
     }
 
     totals.push(calculateTotals(red, parts, totalParts));
@@ -135,6 +157,8 @@ function mixColours()
     {
         $('#paintResult').css('background', resultColour);
     }
+
+    displayRecipe(colours, parts);
 
     return false;
 }
@@ -149,13 +173,13 @@ $(document).ready(function ()
 
     dropdowns.selectmenu({ change: colourSelected });
 
-    $('.ui-selectmenu-button').css("width", "100%");
-
     spinners.spinner(
         {
             min: 0,
             numberFormat: "C"
         });
+
+    $('.ui-selectmenu-button, .ui-spinner').css("width", "100%");
 
     mixButton.click(mixColours);
 });

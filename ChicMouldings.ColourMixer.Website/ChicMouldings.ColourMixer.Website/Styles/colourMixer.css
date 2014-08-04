@@ -2,11 +2,12 @@
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #60c8ff;
     background-color: #fbfcfd;
+    margin: 0;
 }
 
 #container
 {
-    width: 50%;
+    width: 60%;
     margin: 0 auto;
 }
 
@@ -25,6 +26,11 @@ h1
     float: right;
 }
 
+.Clear
+{
+    clear: both;
+}
+
 #selectionContainer, #resultContainer
 {
     width: 48%;
@@ -36,10 +42,19 @@ h1
     width: 100%;
 }
 
-.ResultContainer
+.InputContainer
 {
-    margin: 0 auto;
-    width: 50%;
+    width: 75%;
+}
+
+.DisplayContainer
+{
+    width: 24%;
+}
+
+#resultContainer
+{
+    margin-left: 2%;
 }
 
 .Dropdown
@@ -71,12 +86,6 @@ h1
     width: 150px;
 }
 
-.Clear
-{
-    clear: both;
-}
-
-
 #mixButton 
 {
     background-color: #00466b;
@@ -98,6 +107,11 @@ h1
     margin-bottom: 5px;
 }
 
+#recipe
+{
+    margin-top: 20%;
+}
+
 @media screen and (max-width: 1080px)
 {
     #container
@@ -109,6 +123,7 @@ h1
     {
         float:none;
         width: 100%;
+        margin:0;
     }
 
     .PaintContainer
@@ -120,12 +135,17 @@ h1
 
     .InputContainer
     {
-        width: 80%;
+        width: 75%;
+    }
+
+    .DisplayContainer
+    {
+        width: 24%;
     }
 
     .PaintDisplay
     {
-        margin-left: 0;
+        margin-left: 5px;
     }
 
     .ui-selectmenu-button, .ui-spinner
@@ -141,5 +161,16 @@ h1
     {
         width: 50%;
         text-align:center;
+    }
+
+    .ResultDisplay
+    {
+        margin-left: 100px;
+    }
+
+    #recipe
+    {
+        margin-top: 10px;
+        margin-right: 100px;
     }
 }
