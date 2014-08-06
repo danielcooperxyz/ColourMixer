@@ -59,7 +59,7 @@ function colourSelected()
 
     colour = new RGBColor('rgb(' + selectedColour + ')');
 
-    displayBox = $(this).parents('.PaintContainer').find('.PaintDisplay');
+    displayBox = $(this).parents('.Container').find('.PaintDisplay');
 
     displayBox.css('background', colour.toHex());
 
@@ -73,7 +73,7 @@ function calculateTotals(array, parts, totalParts)
     for (index = 0; index < parts.length; index++)
     {
         part = parseInt(parts[index], 0);
-        
+
         if (part > 0)
         {
             total += (parseInt(array[index], 0) * part);
@@ -85,7 +85,7 @@ function calculateTotals(array, parts, totalParts)
 
 function displayRecipe(colours, parts)
 {
-    var index = 0, recipeText = "<ul>";
+    var index = 0, recipeText = "<ul>", recipe = $('#recipe');
 
     for (index = 0; index < colours.length; index++)
     {
@@ -97,8 +97,13 @@ function displayRecipe(colours, parts)
     }
 
     recipeText += "</ul>";
+    
+    recipe.html(recipeText);
 
-    $('#recipe').html(recipeText);
+    if (recipe.text().length > 0)
+    {
+        recipe.addClass('Populated');
+    }
 }
 
 function mixColours()
@@ -137,7 +142,7 @@ function mixColours()
                 parts[index] = 1;
             }
         }
-        
+
         totalParts += parseInt(parts[index], 0);
 
         temp = new RGBColor("rgb(" + colours[index].val() + ")");
@@ -163,11 +168,28 @@ function mixColours()
     return false;
 }
 
+function reset()
+{
+    var dropdowns = $('.Dropdown'),
+        recipe = $('#recipe');
+
+    dropdowns.children('option').prop('selected', '');
+    $('.Spinner').val('');
+
+    dropdowns.selectmenu('refresh');
+    $('.ui-selectmenu-button, .ui-spinner').css("width", "100%");
+
+    $('.PaintDisplay, #paintResult').css('background-color', "#FFFFFF");
+    recipe.html('');
+    recipe.removeClass('Populated');
+}
+
 $(document).ready(function ()
 {
     var dropdowns = $('.Dropdown'),
         spinners = $('.Spinner'),
-        mixButton = $('#mixButton');
+        mixButton = $('#mixButton'),
+        resetButton = $('#resetButton');
 
     populateDropdowns(dropdowns);
 
@@ -179,7 +201,9 @@ $(document).ready(function ()
             numberFormat: "C"
         });
 
-    $('.ui-selectmenu-button, .ui-spinner').css("width", "100%");
+    $('.ui-selectmenu-button, .ui-spinner, .ui-spinner-input').css("width", "100%");
 
     mixButton.click(mixColours);
+
+    resetButton.click(reset);
 });

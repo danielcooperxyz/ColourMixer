@@ -45,6 +45,7 @@ h1
 .InputContainer
 {
     width: 75%;
+    margin-bottom: 15px;
 }
 
 .DisplayContainer
@@ -65,38 +66,35 @@ h1
     margin-bottom: 5px;
 }
 
-.PaintDisplay, .ResultDisplay
+.PaintDisplay
 {
     border: 1px solid #CCC;
     border-radius: 100px 100px;
     background-color:#FFF;
-}
-
-.PaintDisplay
-{    
     height: 75px;
     width: 75px;
     margin-left: 20px;
 }
 
-.ResultDisplay
+#paintResult, .Populated
 {
-    margin-top:75px;
-    height: 150px;
-    width: 150px;
+    border-radius: 10px 10px;    
+    border: 1px solid #CCC;
+    background-color: #FFF;
+    height: 305px;
+    width: 48%;
 }
 
-#mixButton 
+.Button
 {
     background-color: #00466b;
     border-radius: 5px;
-    padding: 10px 20px;
+    padding: 10px 0px;
     margin-top: 25px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 82px;
+    width: 48%;
     cursor: pointer;
     color: #60c8ff;
+    text-align: center;
 }
 
 .ui-selectmenu-button, .ui-spinner
@@ -108,10 +106,15 @@ h1
     margin-bottom: 5px;
 }
 
-#recipe
+ #recipe ul
+ {
+    padding: 0 40px;
+ }
+
+.Populated
 {
-    margin-top: 20%;
-    margin-right: 50px;
+    border-radius: 10px 10px;    
+    border: 1px solid #CCC;
 }
 
 @media screen and (max-width: 1080px)
@@ -128,26 +131,16 @@ h1
         margin:0;
     }
 
-    .PaintContainer
+    .Container
     {
         display: block;
         margin: 20px 1%;
         width: 98%;
     }
 
-    .InputContainer
-    {
-        width: 75%;
-    }
-
-    .DisplayContainer
-    {
-        width: 24%;
-    }
-
     .PaintDisplay
     {
-        margin-left: 5px;
+        margin: 0 auto;
     }
 
     .ui-selectmenu-button, .ui-spinner
@@ -159,13 +152,12 @@ h1
         margin-right: 0;
     }
 
-    #mixButton
+    .Button
     {
-        width: 50%;
         text-align:center;
     }
 
-    .ResultDisplay
+    #paintResult
     {
         margin-left: 100px;
     }

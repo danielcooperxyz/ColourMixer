@@ -8,7 +8,7 @@
     <h1>Colour Mixer</h1>
 
     <div id="selectionContainer" class="Left">
-        <div class="PaintContainer">
+        <div class="Container">
             <div class="Left InputContainer">
                 <select id="paintOneValue" class="Dropdown"></select>
                 <input id="paintOneParts" class="Spinner" placeholder="How many parts?" />
@@ -18,7 +18,7 @@
             </div>
             <div class="Clear"></div>
         </div>
-        <div class="PaintContainer">
+        <div class="Container">
             <div class="Left InputContainer">
                 <select id="paintTwoValue" class="Dropdown"></select>
                 <input id="paintTwoParts" class="Spinner" placeholder="How many parts?" />
@@ -28,7 +28,7 @@
             </div>
             <div class="Clear"></div>
         </div>
-        <div class="PaintContainer">
+        <div class="Container">
             <div class="Left InputContainer">
                 <select id="paintThreeValue" class="Dropdown"></select>
                 <input id="paintThreeParts" class="Spinner" placeholder="How many parts?" />
@@ -38,7 +38,7 @@
             </div>
             <div class="Clear"></div>
         </div>
-        <div class="PaintContainer">
+        <div class="Container">
             <div class="Left InputContainer">
                 <select id="paintFourValue" class="Dropdown"></select>
                 <input id="paintFourParts" class="Spinner" placeholder="How many parts?" />
@@ -51,9 +51,15 @@
     </div>
 
     <div id="resultContainer" class="Right">
-        <div id="mixButton">Mix Colours</div>
-        <div id="paintResult" class="Left ResultDisplay"></div>
-        <div id="recipe" class="Right"></div>
+        <div class="Container">
+            <div id="paintResult" class="Left"></div>
+            <div id="recipe" class="Right"></div>
+            <div class="Clear"></div>
+        </div>
+        <div id="buttonContainer" class="Container">
+            <div id="mixButton" class="Button Left">Mix Colours</div>
+            <div id="resetButton" class="Button Right">Reset</div>
+            <div class="Clear"></div>
+        </div>
     </div>
-    <div class="Clear"></div>
 </div>
