@@ -11,6 +11,7 @@ function populateDropdowns(dropdowns)
         { text: 'Arles', value: '231,174,69' },
         { text: 'Aubusson Blue', value: '51,90,133' },
         { text: 'Barcelona Orange', value: '230,134,76' },
+        { text: 'Burgundy', value: '94,8,15' },
         { text: 'Chateau Grey', value: '110,117,75' },
         { text: 'Coco', value: '141,128,112' },
         { text: 'Country Grey', value: '198,195,176' },
@@ -34,7 +35,7 @@ function populateDropdowns(dropdowns)
         { text: 'Paris Grey', value: '205,205,205' },
         { text: 'Primer Red', value: '109,48,30' },
         { text: 'Provence', value: '110,162,173' },
-        { text: 'Pure White', value: '255,255,255' },
+        { text: 'Pure', value: '255,255,255' },
         { text: 'Scandinavian Pink', value: '206,116,108' },
         { text: 'Versailles', value: '206,204,130' }
     ];
