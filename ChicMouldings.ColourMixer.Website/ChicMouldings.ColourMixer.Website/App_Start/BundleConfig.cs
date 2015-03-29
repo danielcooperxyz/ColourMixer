@@ -11,11 +11,18 @@ namespace ChicMouldings.ColourMixer.Website.App_Start
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/scripts").Include(
+            Bundle bundle = new ScriptBundle("~/bundles/scripts").Include(
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/jquery-ui.min.js",
                         "~/Scripts/ColourMixer.js",
-                        "~/Scripts/RGBColor.js"));
+                        "~/Scripts/RGBColor.js");
+
+            if (!HttpContext.Current.IsDebuggingEnabled)
+            {
+                bundle.Include("~/Scripts/analytics.js");
+            }
+
+            bundles.Add(bundle);
 
             bundles.Add(new StyleBundle("~/bundles/styles").Include(
                         "~/Styles/*.css"));

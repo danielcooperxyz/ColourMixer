@@ -1,5 +1,4 @@
-﻿
-namespace ChicMouldings.ColourMixer.Website.Controllers
+﻿namespace ChicMouldings.ColourMixer.Website.Controllers
 {
     using System;
     using System.Collections.Generic;

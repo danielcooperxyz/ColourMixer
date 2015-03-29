@@ -20,7 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
-    <JSLintSkip>\Scripts\jquery-2.1.1.intellisense.js|\Scripts\jquery-2.1.1.js|\Scripts\jquery-2.1.1.min.js|\Scripts\RGBColor.js|\Scripts\jquery-ui.min.js</JSLintSkip>
+    <JSLintSkip>\Scripts\jquery-2.1.1.intellisense.js|\Scripts\jquery-2.1.1.js|\Scripts\jquery-2.1.1.min.js|\Scripts\RGBColor.js|\Scripts\jquery-ui.min.js|\Scripts\analytics.js</JSLintSkip>
     <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -148,6 +148,7 @@
     <Content Include="Images\ui-icons_ef8c08_256x240.png" />
     <Content Include="Images\ui-icons_ffd27a_256x240.png" />
     <Content Include="Images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Scripts\analytics.js" />
     <Content Include="Scripts\ColourMixer.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />
