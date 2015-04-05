@@ -131,34 +131,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Global.asax" />
-    <Content Include="Images\Thumbs.db" />
-    <None Include="Scripts\jquery-2.1.1.intellisense.js" />
-    <Content Include="Images\animated-overlay.gif" />
-    <Content Include="Images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
-    <Content Include="Images\ui-bg_diagonals-thick_20_666666_40x40.png" />
-    <Content Include="Images\ui-bg_flat_10_000000_40x100.png" />
-    <Content Include="Images\ui-bg_glass_100_f6f6f6_1x400.png" />
-    <Content Include="Images\ui-bg_glass_100_fdf5ce_1x400.png" />
-    <Content Include="Images\ui-bg_glass_65_ffffff_1x400.png" />
-    <Content Include="Images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
-    <Content Include="Images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
-    <Content Include="Images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
-    <Content Include="Images\ui-icons_222222_256x240.png" />
-    <Content Include="Images\ui-icons_228ef1_256x240.png" />
-    <Content Include="Images\ui-icons_ef8c08_256x240.png" />
-    <Content Include="Images\ui-icons_ffd27a_256x240.png" />
-    <Content Include="Images\ui-icons_ffffff_256x240.png" />
     <Content Include="Scripts\analytics.js" />
     <Content Include="Scripts\ColourMixer.js" />
-    <Content Include="Scripts\jquery-2.1.1.js" />
-    <Content Include="Scripts\jquery-2.1.1.min.js" />
-    <Content Include="Scripts\jquery-ui.min.js" />
     <Content Include="Scripts\RGBColor.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Styles\colourMixer.css" />
-    <Content Include="Styles\jquery-ui-min.css" />
-    <Content Include="Styles\jquery-ui-structure-min.css" />
-    <Content Include="Styles\jquery-ui-theme-min.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -167,7 +144,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Scripts\jquery-2.1.1.min.map" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>

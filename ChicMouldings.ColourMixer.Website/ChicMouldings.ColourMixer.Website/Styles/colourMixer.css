@@ -7,7 +7,7 @@
 
 #container
 {
-    width: 90%;
+    width: 75%;
     margin: 0 auto;
 }
 
@@ -116,6 +116,11 @@ h1
 {
     border-radius: 10px 10px;    
     border: 1px solid #CCC;
+}
+
+#paintTypes-button
+{
+    margin-left: 100px;
 }
 
 @media screen and (max-width: 1080px)
