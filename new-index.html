@@ -3,11 +3,42 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Colour Mixer</title>
-    <link rel="stylesheet" type="text/css" href="src/colour-mixer.css"/>
+    <link rel="stylesheet" type="text/css" href="styles/colour-mixer.css"/>
     <script type="text/javascript" src="src/mixer.js"></script>
     <script type="text/javascript" src="src/script.js"></script>
+    <style>
+    	body {
+			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			color: #0088d1;
+			background-color: #fbfcfd;
+			margin: 0;
+		}
+		#mixer {		
+			width: 50%;
+			height : 50%;
+			margin: 200px auto;
+		}
+    </style>
 </head>
 <body>
+	<!-- This is what it should look like! -->
+	<!-- <div id="mixer">
+		<div class="selectors">
+			<div class="selector">
+				<div class="picker">
+				</div>
+				<div class="parts">
+					<select>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</div> -->
 	<div id="mixer"></div>
 </body>
 </html>

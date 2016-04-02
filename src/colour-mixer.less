@@ -3,168 +3,33 @@
 * Copyright 2014 Daniel Cooper
 */
 
-body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #0088d1;
-    background-color: #fbfcfd;
-    margin: 0;
-}
-
-#container
-{
-    width: 75%;
-    margin: 0 auto;
-}
-
-h1
-{
-    text-align: center;
-}
-
-.Left
-{
-    float: left;
-}
-
-.Right
-{
-    float: right;
-}
-
-.Clear
-{
-    clear: both;
-}
-
-#selectionContainer, #resultContainer
-{
-    width: 48%;
-}
-
-.PaintContainer
-{
-    margin: 20px 1%;
-    width: 100%;
-}
-
-.InputContainer
-{
-    width: 75%;
-    margin-bottom: 15px;
-}
-
-.DisplayContainer
-{
-    width: 24%;
-}
-
-#resultContainer
-{
-    margin-left: 2%;
-}
-
-.Dropdown
-{
-    width: 200px;
-    margin: 0 auto;
-    display: block;
-    margin-bottom: 5px;
-}
-
-.PaintDisplay
-{
-    border: 1px solid #CCC;
-    border-radius: 100px 100px;
-    background-color:#FFF;
-    height: 75px;
-    width: 75px;
-    margin-left: 20px;
-}
-
-#paintResult, .Populated
-{
-    border-radius: 10px 10px;    
-    border: 1px solid #CCC;
-    background-color: #FFF;
-    height: 305px;
-    width: 48%;
-}
-
-.Button
-{
-    background-color: #00466b;
-    border-radius: 5px;
-    padding: 10px 0px;
-    margin-top: 25px;
-    width: 48%;
-    cursor: pointer;
-    color: #60c8ff;
-    text-align: center;
-}
-
-.ui-selectmenu-button, .ui-spinner
-{
-    width: 200px;
-    display:block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 5px;
-}
-
- #recipe ul
- {
-    padding-left: 40px;
-    padding-right:10px;
- }
-
-.Populated
-{
-    border-radius: 10px 10px;    
-    border: 1px solid #CCC;
-}
-
-#paintTypes-button
-{
-    margin-left: 100px;
-}
-
-@media screen and (max-width: 1080px)
-{
-    #container
-    {
-        width: 100%;
-    }
-
-    #selectionContainer, #resultContainer
-    {
-        float:none;
-        width: 100%;
-        margin:0;
-    }
-
-    .Container
-    {
-        display: block;
-        margin: 20px 1%;
-        width: 98%;
-    }
-
-    .PaintDisplay
-    {
-        margin: 0 auto;
-    }
-
-    .ui-selectmenu-button, .ui-spinner
-    {
-        width: 100%;
-        display:block;
-        margin-bottom: 5px;
-        margin-left: 0;
-        margin-right: 0;
-    }
-
-    .Button
-    {
-        text-align:center;
-    }
+#mixer {
+	border: 1px solid grey;
+	border-radius: 5px;
+	.selectors {
+		.selector {
+			border: 1px solid grey;
+			border-radius: 5px;
+			display:inline-block;
+			width: 100px;
+			margin: 10px;
+			.picker, .parts {
+				width: 50px;
+				margin: 5px auto;
+			}
+			.picker{
+				width: 50px;
+				height: 50px;
+				border: 1px solid black;
+				border-radius: 50%;
+			}
+			.parts{
+				select {
+					width: 50px;
+					height: 25px;
+					text-indent: 25%;
+				}
+			}
+		}
+	}	
 }

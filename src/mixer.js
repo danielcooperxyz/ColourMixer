@@ -50,25 +50,63 @@ function Mixer() {
             }
         ];
 
-    setupInterface();
+    this.setupInterface();
 };
 
-mixer.prototype.getHex = function(rgb) {
+Mixer.prototype.getHex = function(rgb) {
     return new RGBColor('rgb(' + rgb + ')').toHex();
 };
 
-mixer.prototype.getHex = function(red, green, blue) {
+Mixer.prototype.getHex = function(red, green, blue) {
     return new RGBColor('rgb(' + red + ',' + green + ',' + blue + ')').toHex();
 };
 
-function setupInterface() {
+Mixer.prototype.setupInterface = function() {
     var mixer = document.getElementById('mixer'),
-    i, newColour;
+    i, selectors, newColour;
 
-    newColour = document.createElement("div");
-    newColour.className += "colourPicker";
+    selectors = document.createElement("div");
+    selectors.className += "selectors";
 
-    for(var i = 0; i < this.numberOfColours; i++) {
-        mixer.appendChild(newColour);
+    for(var i = 1; i <= this.numberOfColours; i++) {
+
+        selectors.appendChild(this.newSelector(i));
     }
+
+    mixer.appendChild(selectors);
 };
+
+Mixer.prototype.newSelector = function(mixerId) {
+
+    var selector, picker, parts, select, i, option;
+
+    selector = newDiv();
+    selector.className += "selector";
+    selector.id = "color-" + mixerId;
+    selector.setAttribute("mixer-id", mixerId);
+
+    picker = newDiv();
+    picker.className += "picker";
+
+    parts = newDiv();
+    parts.className += "parts";
+    select = document.createElement("select");
+    
+    for(i = 1; i <= 5; i++) {
+        option = document.createElement("option");
+        option.value = i;
+        option.textContent = i;
+        select.appendChild(option);
+    }
+
+    parts.appendChild(select);
+
+    selector.appendChild(picker);
+    selector.appendChild(parts);
+
+    return selector;
+};
+
+function newDiv() {
+    return document.createElement("div");
+}
