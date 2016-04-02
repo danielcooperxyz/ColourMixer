@@ -1,4 +1,5 @@
-﻿/*! ColourMixer.js
+/*
+* colour-mixer.js
 * Copyright 2014 Daniel Cooper
 */
 var data =
@@ -232,3 +233,4 @@ window.onload = function () {
 
     setDropdownListeners();
 };
+
