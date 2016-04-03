@@ -5,27 +5,37 @@
 #mixer {
   border: 1px solid grey;
   border-radius: 5px;
+  min-width: 250px;
 }
-#mixer .selectors .selector {
-  border: 1px solid grey;
+#mixer .xerel {
+  min-width: 100px;
+  width: 90%;
+  margin: 2% 5%;
+  border: 1px solid black;
   border-radius: 5px;
-  display: inline-block;
-  width: 100px;
-  margin: 10px;
 }
-#mixer .selectors .selector .picker,
-#mixer .selectors .selector .parts {
-  width: 50px;
-  margin: 5px auto;
+#mixer .selectors {
+  padding-top: 2%;
 }
 #mixer .selectors .selector .picker {
-  width: 50px;
   height: 50px;
   border: 1px solid black;
-  border-radius: 50%;
 }
 #mixer .selectors .selector .parts select {
-  width: 50px;
-  height: 25px;
-  text-indent: 25%;
+  text-indent: 50%;
+}
+#mixer input,
+#mixer select {
+  margin: 0;
+  padding: 0;
+  height: 30px;
+  display: block;
+  background: white;
+}
+#mixer .mixOutput {
+  height: 50px;
+}
+#mixer .clear {
+  clear: both;
+  content: '';
 }

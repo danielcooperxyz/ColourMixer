@@ -50,6 +50,12 @@ function Mixer() {
             }
         ];
 
+    // enable reset button?
+    this.enableReset = true;
+
+    // configurable layouts?
+    // this.layout = 1;
+
     this.setupInterface();
 };
 
@@ -63,7 +69,7 @@ Mixer.prototype.getHex = function(red, green, blue) {
 
 Mixer.prototype.setupInterface = function() {
     var mixer = document.getElementById('mixer'),
-    i, selectors, newColour;
+    i, selectors, buttons, mixButton, resetButton, mixOutput, clear;
 
     selectors = document.createElement("div");
     selectors.className += "selectors";
@@ -74,6 +80,27 @@ Mixer.prototype.setupInterface = function() {
     }
 
     mixer.appendChild(selectors);
+
+    buttons = newDiv();
+    buttons.className += "buttons";
+
+    mixButton = newButton();
+    mixButton.value = "Mix!";
+    buttons.appendChild(mixButton);
+
+    if (this.enableReset) {
+
+        resetButton = newButton();
+        resetButton.value = "Reset";
+        buttons.appendChild(resetButton);
+    }
+
+    mixer.appendChild(buttons);
+
+    mixOutput = newDiv();
+    mixOutput.className += "mixOutput xerel";
+
+    mixer.appendChild(mixOutput);
 };
 
 Mixer.prototype.newSelector = function(mixerId) {
@@ -86,11 +113,12 @@ Mixer.prototype.newSelector = function(mixerId) {
     selector.setAttribute("mixer-id", mixerId);
 
     picker = newDiv();
-    picker.className += "picker";
+    picker.className += "picker xerel";
 
     parts = newDiv();
     parts.className += "parts";
     select = document.createElement("select");
+    select.className += "xerel";
     
     for(i = 1; i <= 5; i++) {
         option = document.createElement("option");
@@ -109,4 +137,12 @@ Mixer.prototype.newSelector = function(mixerId) {
 
 function newDiv() {
     return document.createElement("div");
+}
+
+function newButton() {
+    var button = document.createElement("input");
+    button.setAttribute("type", "button");
+    button.className += "xerel";
+
+    return button;
 }
