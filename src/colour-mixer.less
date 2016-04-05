@@ -5,6 +5,7 @@
 
 #mixer {
 	border: 1px solid #CCC;
+	color: #000;
 	border-radius: 5px;
     min-width: 250px;
     max-width: 400px;
@@ -18,7 +19,7 @@
 		margin: 2% 5%;
 		border: 1px solid #CCC;
 		border-radius: 5px;
-    }
+	}
 	.selectors {
 		padding-top: 2%;
 		.selector {
@@ -28,6 +29,7 @@
 				-webkit-box-shadow: 2px 2px 5px 0px rgba(204,204,204,1);
 				-moz-box-shadow: 2px 2px 5px 0px rgba(204,204,204,1);
 				box-shadow: 2px 2px 5px 0px rgba(204,204,204,1);
+				text-align: center;
 			}
 			.parts select {
 				text-indent: 50%;
@@ -35,12 +37,18 @@
 		}
 	}
 	input, select {
-		margin: 0;
+		margin: 2% 5%;
 		padding: 0;
+		min-width: 100px;
+		width:90%;
 		height: 30px;
 		display: block;
-		background: white;
 	}
+	input[type="button"] {		
+		width:40%;
+		float: left;
+	}
+
 	.mixOutput {
 		height: 50px;
 	}

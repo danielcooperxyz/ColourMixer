@@ -97,6 +97,10 @@ Mixer.prototype.setupInterface = function() {
 
     mixer.appendChild(buttons);
 
+    clear = newDiv();
+    clear.className += "clear";
+    mixer.appendChild(clear);
+
     mixOutput = newDiv();
     mixOutput.className += "mixOutput xerel";
 
@@ -105,7 +109,7 @@ Mixer.prototype.setupInterface = function() {
 
 Mixer.prototype.newSelector = function(mixerId) {
 
-    var selector, picker, parts, select, i, option;
+    var selector, picker, text, parts, select, i, option;
 
     selector = newDiv();
     selector.className += "selector";
@@ -114,6 +118,10 @@ Mixer.prototype.newSelector = function(mixerId) {
 
     picker = newDiv();
     picker.className += "picker xerel";
+
+    text = document.createElement("p");
+    text.textContent = "Select a colour...";
+    picker.appendChild(text);
 
     parts = newDiv();
     parts.className += "parts";
@@ -142,7 +150,6 @@ function newDiv() {
 function newButton() {
     var button = document.createElement("input");
     button.setAttribute("type", "button");
-    button.className += "xerel";
 
     return button;
 }
