@@ -3,15 +3,19 @@
 * Copyright 2014 Daniel Cooper
 */
 #mixer {
-  border: 1px solid grey;
+  border: 1px solid #CCC;
   border-radius: 5px;
   min-width: 250px;
+  max-width: 400px;
+  -webkit-box-shadow: 2px 2px 5px 0px #cccccc;
+  -moz-box-shadow: 2px 2px 5px 0px #cccccc;
+  box-shadow: 2px 2px 5px 0px #cccccc;
 }
 #mixer .xerel {
   min-width: 100px;
   width: 90%;
   margin: 2% 5%;
-  border: 1px solid black;
+  border: 1px solid #CCC;
   border-radius: 5px;
 }
 #mixer .selectors {
@@ -19,7 +23,10 @@
 }
 #mixer .selectors .selector .picker {
   height: 50px;
-  border: 1px solid black;
+  border: 1px solid #CCC;
+  -webkit-box-shadow: 2px 2px 5px 0px #cccccc;
+  -moz-box-shadow: 2px 2px 5px 0px #cccccc;
+  box-shadow: 2px 2px 5px 0px #cccccc;
 }
 #mixer .selectors .selector .parts select {
   text-indent: 50%;
