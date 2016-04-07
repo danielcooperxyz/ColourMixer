@@ -102,9 +102,25 @@ Mixer.prototype.setupInterface = function() {
     mixer.appendChild(clear);
 
     mixOutput = newDiv();
-    mixOutput.className += "mixOutput xerel";
+    mixOutput.className += "mix-output xerel";
 
     mixer.appendChild(mixOutput);
+
+    mixer.appendChild(this.setupPaintPicker());
+};
+
+Mixer.prototype.setupPaintPicker = function() {
+    var paintPicker, paintDropdown, paintTypes, colorPicker;
+
+    paintPicker = newDiv();
+    paintPicker.className += "paint-picker hidden";
+
+    paintTypes = this.getPaintTypeDropdown();
+    paintTypes.onSelect = onDropdownSelect;
+
+    paintPicker.appendChild(paintTypes);
+
+    return paintPicker;
 };
 
 Mixer.prototype.newSelector = function(mixerId) {
@@ -143,6 +159,30 @@ Mixer.prototype.newSelector = function(mixerId) {
     return selector;
 };
 
+Mixer.prototype.getPaintTypeDropdown = function() {
+    var select, index, paintName, option;
+
+    select = document.createElement("select");
+
+    for(index = 0; index < this.paintSet.length; index++) {
+        
+        paintName = this.paintSet[index].name;
+
+        if (paintName) {
+            option = document.createElement("option");
+            option.value = paintName;
+            option.textContent = paintName;
+            select.appendChild(option);
+        } else {
+            console.log("Property 'name' not found in paintSet[" + index + "!");
+        }
+
+        createOptionFragment(this.paintSet[index]);
+    }
+
+    return select;
+};
+
 function newDiv() {
     return document.createElement("div");
 }
@@ -152,4 +192,29 @@ function newButton() {
     button.setAttribute("type", "button");
 
     return button;
+}
+
+function createOptionFragment(paintSet) {
+    var docFrag, index, colours, option;
+
+    docFrag = document.createDocumentFragment();
+
+    if (paintSet.colours) {
+        for (index = 0; index < paintSet.colours.length; index++) {            
+
+            option = document.createElement("option");
+            option.textContent = paintSet.colours[index].text;
+            option.value = paintSet.colours[index].value;
+
+            docFrag.appendChild(option);
+        }
+
+        paintSet.options = docFrag;
+    } else {
+        console.log("Property 'colours' not found!");
+    }
+}
+
+function onDropdownSelect() {
+    alert("Hello world");
 }

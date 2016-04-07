@@ -46,10 +46,21 @@
   width: 40%;
   float: left;
 }
-#mixer .mixOutput {
+#mixer .mix-output {
   height: 50px;
 }
 #mixer .clear {
   clear: both;
   content: '';
+}
+#mixer .hidden {
+  display: none;
+}
+#mixer .paint-picker {
+  position: absolute;
+  width: 100%;
+  min-width: 250px;
+  max-width: 400px;
+  background: black;
+  height: 90%;
 }
