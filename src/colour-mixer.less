@@ -30,6 +30,7 @@
 				-moz-box-shadow: 2px 2px 5px 0px rgba(204,204,204,1);
 				box-shadow: 2px 2px 5px 0px rgba(204,204,204,1);
 				text-align: center;
+				cursor: pointer;
 			}
 			.parts select {
 				text-indent: 50%;
@@ -65,5 +66,31 @@
         max-width: 400px;
         background: black;
         height: 90%;
+        ul.colour-list{
+			height : 250px;
+			overflow-y: scroll;
+			li {
+				height: 40px;
+				list-style: none;
+				margin: 5px;
+				p {
+					display: inline-block;
+					margin: 0;
+					margin-top: 10px;
+					margin-left: 10px;
+					float: left;
+				}
+				div {
+					display: inline-block;
+					height: 34px;
+					width: 34px;
+					margin: 3px;
+					background: black;
+					float: left;
+				}
+			}
+		}
     }
+
+
 }

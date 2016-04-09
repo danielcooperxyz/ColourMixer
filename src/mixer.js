@@ -1,6 +1,6 @@
 function Mixer() {
 	this.numberOfColours = 3;
-	this.paintSet =
+	this.paintSets =
         [
             {
                 name: 'Annie Sloane',
@@ -63,10 +63,6 @@ Mixer.prototype.getHex = function(rgb) {
     return new RGBColor('rgb(' + rgb + ')').toHex();
 };
 
-Mixer.prototype.getHex = function(red, green, blue) {
-    return new RGBColor('rgb(' + red + ',' + green + ',' + blue + ')').toHex();
-};
-
 Mixer.prototype.setupInterface = function() {
     var mixer = document.getElementById('mixer'),
     i, selectors, buttons, mixButton, resetButton, mixOutput, clear;
@@ -109,38 +105,10 @@ Mixer.prototype.setupInterface = function() {
     mixer.appendChild(this.setupPaintPicker());
 };
 
-Mixer.prototype.setupPaintPicker = function() {
-    var paintPicker, paintDropdown, paintTypes, colorPicker;
-
-    paintPicker = newDiv();
-    paintPicker.className += "paint-picker hidden";
-
-    paintTypes = this.getPaintTypeDropdown();
-    paintTypes.onSelect = onDropdownSelect;
-
-    paintPicker.appendChild(paintTypes);
-
-    return paintPicker;
-};
-
 Mixer.prototype.newSelector = function(mixerId) {
 
     var selector, picker, text, parts, select, i, option;
 
-    selector = newDiv();
-    selector.className += "selector";
-    selector.id = "color-" + mixerId;
-    selector.setAttribute("mixer-id", mixerId);
-
-    picker = newDiv();
-    picker.className += "picker xerel";
-
-    text = document.createElement("p");
-    text.textContent = "Select a colour...";
-    picker.appendChild(text);
-
-    parts = newDiv();
-    parts.className += "parts";
     select = document.createElement("select");
     select.className += "xerel";
     
@@ -151,7 +119,22 @@ Mixer.prototype.newSelector = function(mixerId) {
         select.appendChild(option);
     }
 
+    parts = newDiv();
+    parts.className += "parts";
     parts.appendChild(select);
+
+    text = document.createElement("p");
+    text.textContent = "Select a colour...";
+
+    picker = newDiv();
+    picker.className += "picker xerel";
+    picker.appendChild(text);
+    picker.onclick = onColorClick;
+
+    selector = newDiv();
+    selector.className += "selector";
+    selector.id = "color-" + mixerId;
+    selector.setAttribute("mixer-id", mixerId);
 
     selector.appendChild(picker);
     selector.appendChild(parts);
@@ -159,17 +142,34 @@ Mixer.prototype.newSelector = function(mixerId) {
     return selector;
 };
 
+Mixer.prototype.setupPaintPicker = function() {
+    var paintPicker, paintDropdown, paintTypes, colourList;
+
+    paintPicker = newDiv();
+    paintPicker.className += "paint-picker hidden";
+
+    paintTypes = this.getPaintTypeDropdown();
+    paintTypes.onSelect = onDropdownSelect;
+
+    paintPicker.appendChild(paintTypes);
+
+    colourList = document.createElement("ul");
+    colourList.className += "colour-list"
+
+    return paintPicker;
+};
+
 Mixer.prototype.getPaintTypeDropdown = function() {
     var select, index, paintName, option;
 
     select = document.createElement("select");
 
-    for(index = 0; index < this.paintSet.length; index++) {
+    for(index = 0; index < this.paintSets.length; index++) {
         
-        paintName = this.paintSet[index].name;
+        paintName = this.paintSets[index].name;
 
         if (paintName) {
-            option = document.createElement("option");
+            option = document.createElement("li");
             option.value = paintName;
             option.textContent = paintName;
             select.appendChild(option);
@@ -177,11 +177,40 @@ Mixer.prototype.getPaintTypeDropdown = function() {
             console.log("Property 'name' not found in paintSet[" + index + "!");
         }
 
-        createOptionFragment(this.paintSet[index]);
+        this.createOptionFragment(this.paintSets[index]);
     }
 
     return select;
 };
+
+Mixer.prototype.createOptionFragment = function(paintSet) {
+    var docFrag, index, colours, item, name, swatch;
+
+    docFrag = document.createDocumentFragment();
+
+    if (paintSet.colours) {
+        for (index = 0; index < paintSet.colours.length; index++) {
+            paintSet.colours[index].id = guid();
+
+            swatch = newDiv();
+            swatch.style.background = this.getHex(paintSet.colours[index].value);
+
+            name = document.createElement("p");
+            name.textContent = paintSet.colours[index].text;
+
+            item = document.createElement("li");
+            item.id = paintSet.colours[index].id;
+            item.appendChild(swatch);
+            item.appendChild(name);
+
+            docFrag.appendChild(item);
+        }
+
+        paintSet.options = docFrag;
+    } else {
+        console.log("Property 'colours' not found!");
+    }
+}
 
 function newDiv() {
     return document.createElement("div");
@@ -194,27 +223,21 @@ function newButton() {
     return button;
 }
 
-function createOptionFragment(paintSet) {
-    var docFrag, index, colours, option;
-
-    docFrag = document.createDocumentFragment();
-
-    if (paintSet.colours) {
-        for (index = 0; index < paintSet.colours.length; index++) {            
-
-            option = document.createElement("option");
-            option.textContent = paintSet.colours[index].text;
-            option.value = paintSet.colours[index].value;
-
-            docFrag.appendChild(option);
-        }
-
-        paintSet.options = docFrag;
-    } else {
-        console.log("Property 'colours' not found!");
-    }
+function onColorClick() {
+    document.getElementsByClassName("paint-picker")[0].classList.toggle("hidden");
 }
 
 function onDropdownSelect() {
     alert("Hello world");
+}
+
+function guid() {
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+    s4() + '-' + s4() + s4() + s4();
+}
+
+function s4() {
+  return Math.floor((1 + Math.random()) * 0x10000)
+    .toString(16)
+    .substring(1);
 }

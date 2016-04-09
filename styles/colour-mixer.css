@@ -29,6 +29,7 @@
   -moz-box-shadow: 2px 2px 5px 0px #cccccc;
   box-shadow: 2px 2px 5px 0px #cccccc;
   text-align: center;
+  cursor: pointer;
 }
 #mixer .selectors .selector .parts select {
   text-indent: 50%;
@@ -63,4 +64,28 @@
   max-width: 400px;
   background: black;
   height: 90%;
+}
+#mixer .paint-picker ul.colour-list {
+  height: 250px;
+  overflow-y: scroll;
+}
+#mixer .paint-picker ul.colour-list li {
+  height: 40px;
+  list-style: none;
+  margin: 5px;
+}
+#mixer .paint-picker ul.colour-list li p {
+  display: inline-block;
+  margin: 0;
+  margin-top: 10px;
+  margin-left: 10px;
+  float: left;
+}
+#mixer .paint-picker ul.colour-list li div {
+  display: inline-block;
+  height: 34px;
+  width: 34px;
+  margin: 3px;
+  background: black;
+  float: left;
 }
