@@ -64,6 +64,7 @@
   max-width: 400px;
   background: black;
   height: 90%;
+  max-height: 600px;
 }
 #mixer .paint-picker ul.colour-list {
   height: 250px;

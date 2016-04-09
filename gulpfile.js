@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var less = require('gulp-less');
+var exec = require('child_process').exec;
 
 function errorLogHandler(msg){
     gutil.log(gutil.colors.red(msg));
@@ -20,8 +21,16 @@ gulp.task('watch', function() {
     //gulp.watch("./scripts/*", ['']);;
 });
 
+gulp.task('server', function() {
+    exec('node server.js', function (err, stdout, stderr) {
+    console.log(stdout);
+    console.log(stderr);
+  });
+});
+
 gulp.task(
 	'default', 
-	[	'less',
+	[	'server',
+        'less',
 		'watch'
 	]);

@@ -164,12 +164,17 @@ Mixer.prototype.getPaintTypeDropdown = function() {
 
     select = document.createElement("select");
 
+    option = document.createElement("option");
+    option.value = null;
+    option.textContent = "Select...";
+    select.appendChild(option);
+    
     for(index = 0; index < this.paintSets.length; index++) {
         
         paintName = this.paintSets[index].name;
 
         if (paintName) {
-            option = document.createElement("li");
+            option = document.createElement("option");
             option.value = paintName;
             option.textContent = paintName;
             select.appendChild(option);
@@ -224,7 +229,26 @@ function newButton() {
 }
 
 function onColorClick() {
-    document.getElementsByClassName("paint-picker")[0].classList.toggle("hidden");
+
+    // get top of window
+    var windowTop = window.pageYOffset,
+    paintPicker = document.getElementsByClassName("paint-picker")[0],
+    displayStyle = window.getComputedStyle(paintPicker).display;
+
+    if (displayStyle === "none") {
+
+        // set top of colour picker dialog
+        paintPicker.style.top = windowTop + 50 + "px";
+
+        // block scroll
+        disableScroll();
+    } else {
+
+        enableScroll();
+    }
+
+    //show or hide the dialog
+    paintPicker.classList.toggle("hidden");
 }
 
 function onDropdownSelect() {
@@ -240,4 +264,40 @@ function s4() {
   return Math.floor((1 + Math.random()) * 0x10000)
     .toString(16)
     .substring(1);
+}
+
+// left: 37, up: 38, right: 39, down: 40,
+// spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
+var keys = {37: 1, 38: 1, 39: 1, 40: 1};
+
+function preventDefault(e) {
+  e = e || window.event;
+  if (e.preventDefault)
+      e.preventDefault();
+  e.returnValue = false;  
+}
+
+function preventDefaultForScrollKeys(e) {
+    if (keys[e.keyCode]) {
+        preventDefault(e);
+        return false;
+    }
+}
+
+function disableScroll() {
+  if (window.addEventListener) // older FF
+      window.addEventListener('DOMMouseScroll', preventDefault, false);
+  window.onwheel = preventDefault; // modern standard
+  window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
+  window.ontouchmove  = preventDefault; // mobile
+  document.onkeydown  = preventDefaultForScrollKeys;
+}
+
+function enableScroll() {
+    if (window.removeEventListener)
+        window.removeEventListener('DOMMouseScroll', preventDefault, false);
+    window.onmousewheel = document.onmousewheel = null; 
+    window.onwheel = null; 
+    window.ontouchmove = null;  
+    document.onkeydown = null;  
 }

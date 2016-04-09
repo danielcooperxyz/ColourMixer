@@ -4,6 +4,7 @@
   "description": "A javascript application to mix paint colours!",
   "repository": "https://bitbucket.org/d4nc00per/colourmixer",
   "devDependencies": {
+    "express": "^4.13.4",
     "gulp": "^3.9.1",
     "gulp-less": "^3.0.5"
   },
