@@ -30,6 +30,7 @@
   box-shadow: 2px 2px 5px 0px #cccccc;
   text-align: center;
   cursor: pointer;
+  color: #999;
 }
 #mixer .selectors .selector .parts select {
   text-indent: 50%;
@@ -60,15 +61,23 @@
 #mixer .paint-picker {
   position: absolute;
   width: 100%;
+  border: 1px solid #CCC;
+  color: #000;
+  border-radius: 5px;
+  background: #FFF;
   min-width: 250px;
   max-width: 400px;
-  background: black;
+  -webkit-box-shadow: inherit;
+  -moz-box-shadow: inherit;
+  box-shadow: inherit;
   height: 90%;
   max-height: 600px;
+  z-index: 2;
 }
 #mixer .paint-picker ul.colour-list {
   height: 250px;
   overflow-y: scroll;
+  padding: 0;
 }
 #mixer .paint-picker ul.colour-list li {
   height: 40px;
@@ -89,4 +98,15 @@
   margin: 3px;
   background: black;
   float: left;
+}
+#mixer .dialog-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  background: #000;
+  z-index: 1;
 }

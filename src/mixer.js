@@ -65,7 +65,8 @@ Mixer.prototype.getHex = function(rgb) {
 
 Mixer.prototype.setupInterface = function() {
     var mixer = document.getElementById('mixer'),
-    i, selectors, buttons, mixButton, resetButton, mixOutput, clear;
+    i, selectors, buttons, mixButton, resetButton, 
+    mixOutput, clear, dialogBackground;
 
     selectors = document.createElement("div");
     selectors.className += "selectors";
@@ -103,6 +104,10 @@ Mixer.prototype.setupInterface = function() {
     mixer.appendChild(mixOutput);
 
     mixer.appendChild(this.setupPaintPicker());
+    
+    dialogBackground = newDiv();
+    dialogBackground.className += "dialog-background hidden";
+    mixer.appendChild(dialogBackground);
 };
 
 Mixer.prototype.newSelector = function(mixerId) {
@@ -143,18 +148,27 @@ Mixer.prototype.newSelector = function(mixerId) {
 };
 
 Mixer.prototype.setupPaintPicker = function() {
-    var paintPicker, paintDropdown, paintTypes, colourList;
+    var paintPicker, paintDropdown, paintTypes, colourList,
+    okButton, cancelButton;
 
     paintPicker = newDiv();
     paintPicker.className += "paint-picker hidden";
 
     paintTypes = this.getPaintTypeDropdown();
     paintTypes.onSelect = onDropdownSelect;
-
     paintPicker.appendChild(paintTypes);
 
     colourList = document.createElement("ul");
-    colourList.className += "colour-list"
+    colourList.className += "colour-list xerel";
+    paintPicker.appendChild(colourList);  
+
+    okButton = newButton();
+    okButton.value = "Ok";
+    paintPicker.appendChild(okButton);
+
+    cancelButton = newButton();
+    cancelButton.value = "Cancel";
+    paintPicker.appendChild(cancelButton);
 
     return paintPicker;
 };
@@ -163,6 +177,7 @@ Mixer.prototype.getPaintTypeDropdown = function() {
     var select, index, paintName, option;
 
     select = document.createElement("select");
+    select.className += "xerel";
 
     option = document.createElement("option");
     option.value = null;
@@ -233,12 +248,15 @@ function onColorClick() {
     // get top of window
     var windowTop = window.pageYOffset,
     paintPicker = document.getElementsByClassName("paint-picker")[0],
-    displayStyle = window.getComputedStyle(paintPicker).display;
+    displayStyle = window.getComputedStyle(paintPicker).display,
+    dialogBackground = document.getElementsByClassName("dialog-background")[0];
 
     if (displayStyle === "none") {
 
         // set top of colour picker dialog
         paintPicker.style.top = windowTop + 50 + "px";
+        dialogBackground.style.top = windowTop + "px";
+        dialogBackground.style.height = window.innerHeight + "px";
 
         // block scroll
         disableScroll();
@@ -249,6 +267,7 @@ function onColorClick() {
 
     //show or hide the dialog
     paintPicker.classList.toggle("hidden");
+    dialogBackground.classList.toggle("hidden");
 }
 
 function onDropdownSelect() {
