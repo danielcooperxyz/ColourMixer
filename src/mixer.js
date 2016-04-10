@@ -99,6 +99,7 @@ Mixer.prototype.setupInterface = function() {
     mixer.appendChild(clear);
 
     mixOutput = newDiv();
+    mixOutput.id = "mix-output";
     mixOutput.className += "mix-output xerel";
 
     mixer.appendChild(mixOutput);
@@ -106,7 +107,8 @@ Mixer.prototype.setupInterface = function() {
     mixer.appendChild(this.setupPaintPicker());
     
     dialogBackground = newDiv();
-    dialogBackground.className += "dialog-background hidden";
+    dialogBackground.id = "dialog-background";
+    dialogBackground.className += "hidden";
     mixer.appendChild(dialogBackground);
 };
 
@@ -152,15 +154,17 @@ Mixer.prototype.setupPaintPicker = function() {
     okButton, cancelButton;
 
     paintPicker = newDiv();
-    paintPicker.className += "paint-picker hidden";
+    paintPicker.id = "paint-picker";
+    paintPicker.className += "hidden";
 
     paintTypes = this.getPaintTypeDropdown();
-    paintTypes.onSelect = onDropdownSelect;
+    paintTypes.onchange = this.onPaintSelect.bind(this);
     paintPicker.appendChild(paintTypes);
 
     colourList = document.createElement("ul");
-    colourList.className += "colour-list xerel";
-    paintPicker.appendChild(colourList);  
+    colourList.id = "colour-list";
+    colourList.className += "xerel";
+    paintPicker.appendChild(colourList);
 
     okButton = newButton();
     okButton.value = "Ok";
@@ -180,17 +184,18 @@ Mixer.prototype.getPaintTypeDropdown = function() {
     select.className += "xerel";
 
     option = document.createElement("option");
-    option.value = null;
+    option.value = 0;
     option.textContent = "Select...";
     select.appendChild(option);
     
     for(index = 0; index < this.paintSets.length; index++) {
         
         paintName = this.paintSets[index].name;
+        this.paintSets[index].id = guid();
 
         if (paintName) {
             option = document.createElement("option");
-            option.value = paintName;
+            option.value = this.paintSets[index].id;
             option.textContent = paintName;
             select.appendChild(option);
         } else {
@@ -210,7 +215,6 @@ Mixer.prototype.createOptionFragment = function(paintSet) {
 
     if (paintSet.colours) {
         for (index = 0; index < paintSet.colours.length; index++) {
-            paintSet.colours[index].id = guid();
 
             swatch = newDiv();
             swatch.style.background = this.getHex(paintSet.colours[index].value);
@@ -219,7 +223,6 @@ Mixer.prototype.createOptionFragment = function(paintSet) {
             name.textContent = paintSet.colours[index].text;
 
             item = document.createElement("li");
-            item.id = paintSet.colours[index].id;
             item.appendChild(swatch);
             item.appendChild(name);
 
@@ -232,24 +235,13 @@ Mixer.prototype.createOptionFragment = function(paintSet) {
     }
 }
 
-function newDiv() {
-    return document.createElement("div");
-}
-
-function newButton() {
-    var button = document.createElement("input");
-    button.setAttribute("type", "button");
-
-    return button;
-}
-
 function onColorClick() {
 
     // get top of window
     var windowTop = window.pageYOffset,
-    paintPicker = document.getElementsByClassName("paint-picker")[0],
+    paintPicker = document.getElementById("paint-picker"),
     displayStyle = window.getComputedStyle(paintPicker).display,
-    dialogBackground = document.getElementsByClassName("dialog-background")[0];
+    dialogBackground = document.getElementById("dialog-background");
 
     if (displayStyle === "none") {
 
@@ -265,13 +257,33 @@ function onColorClick() {
         enableScroll();
     }
 
-    //show or hide the dialog
-    paintPicker.classList.toggle("hidden");
     dialogBackground.classList.toggle("hidden");
+    paintPicker.classList.toggle("hidden");}
+
+Mixer.prototype.onPaintSelect = function(e) {
+    var changed = e.srcElement, selected = changed.value,
+    colourList = document.getElementById("colour-list"),
+    i, colourFrag;
+
+    for(i = 0; i < this.paintSets.length; i++) {
+        if (this.paintSets[i].id === selected) {
+            colourFrag = this.paintSets[i].options;
+            break;
+        }
+    }
+    colourList.textContent = "";
+    colourList.appendChild(colourFrag.cloneNode(true));
 }
 
-function onDropdownSelect() {
-    alert("Hello world");
+function newDiv() {
+    return document.createElement("div");
+}
+
+function newButton() {
+    var button = document.createElement("input");
+    button.setAttribute("type", "button");
+
+    return button;
 }
 
 function guid() {

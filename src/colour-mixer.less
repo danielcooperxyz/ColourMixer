@@ -7,6 +7,7 @@
 	border: 1px solid #CCC;
 	color: #000;
 	border-radius: 5px;
+	width: 50%;
     min-width: 250px;
     max-width: 400px;
 	-webkit-box-shadow: 2px 2px 5px 0px rgba(204,204,204,1);
@@ -60,22 +61,23 @@
     .hidden {
         display: none;
     }
-    .paint-picker {
+    div#paint-picker {
         position: absolute;
         width: 100%;
         border: 1px solid #CCC;
 		color: #000;
 		border-radius: 5px;
 		background: #FFF;
+		width: 50%;
 	    min-width: 250px;
 	    max-width: 400px;
 		-webkit-box-shadow: inherit;
 		-moz-box-shadow: inherit;
 		box-shadow: inherit;
         height: 90%;
-        max-height: 600px;
+        max-height: 350px;
 		z-index: 2;
-        ul.colour-list{
+        ul#colour-list{
 			height : 250px;
 			overflow-y: scroll;
 			padding: 0;
@@ -101,7 +103,7 @@
 			}
 		}
     }
-	.dialog-background {
+	div#dialog-background {
 		position: absolute;
 		top:0;
 		left: 0;
