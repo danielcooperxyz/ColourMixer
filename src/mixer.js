@@ -226,6 +226,8 @@ Mixer.prototype.createOptionFragment = function(paintSet) {
             item.appendChild(swatch);
             item.appendChild(name);
 
+            item.onclick = itemSelected;
+
             docFrag.appendChild(item);
         }
 
@@ -258,7 +260,8 @@ function onColorClick() {
     }
 
     dialogBackground.classList.toggle("hidden");
-    paintPicker.classList.toggle("hidden");}
+    paintPicker.classList.toggle("hidden");
+}
 
 Mixer.prototype.onPaintSelect = function(e) {
     var changed = e.srcElement, selected = changed.value,
@@ -273,6 +276,7 @@ Mixer.prototype.onPaintSelect = function(e) {
     }
     colourList.textContent = "";
     colourList.appendChild(colourFrag.cloneNode(true));
+    colourList.onclick = itemSelected;
 }
 
 function newDiv() {
@@ -331,4 +335,34 @@ function enableScroll() {
     window.onwheel = null; 
     window.ontouchmove = null;  
     document.onkeydown = null;  
+}
+
+function itemSelected(e) {
+    var selectedItem, i,
+    colourList = document.getElementById('colour-list');
+
+    if(e.target && e.target.nodeName != "ul") {
+        switch (e.target.nodeName.toUpperCase()) {
+            case "LI":
+                selectedItem = e.target;
+                break;
+            case "P":
+            case "DIV":
+                selectedItem = e.target.parentNode;
+                break;
+            default:
+                selectedItem = null;
+                break;
+        }
+
+        if (selectedItem) {
+
+            for (i = 0; i < colourList.children.length; i++) {
+
+                colourList.children[i].classList.remove("selected");
+            }
+
+            selectedItem.classList.toggle("selected");
+        }
+    }
 }
